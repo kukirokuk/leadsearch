@@ -9,8 +9,8 @@ from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 import os
 
 PORT = int(os.environ.get('PORT', 5000))
-TOKEN = int(os.environ.get('TOKEN', None))
-APP_URL = int(os.environ.get('APP_URL', None))
+TOKEN = os.environ.get('TOKEN', None)
+APP_URL = os.environ.get('APP_URL', None)
 
 # Enable logging
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
