@@ -11,7 +11,6 @@ import os
 PORT = int(os.environ.get('PORT', 5000))
 TOKEN = os.environ.get('TOKEN', None)
 APP_URL = os.environ.get('APP_URL', None)
-
 # Enable logging
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
                     level=logging.INFO)
@@ -58,9 +57,10 @@ def main():
 
     # Start the Bot
     updater.start_webhook(listen="0.0.0.0",
-                          port=int(PORT),
-                          url_path=TOKEN)
-    updater.bot.setWebhook(APP_URL + TOKEN)
+                        port=int(PORT),
+                        url_path=TOKEN,
+                        webhook_url=f"{APP_URL}/{TOKEN}")
+    # updater.bot.setWebhook(APP_URL + TOKEN)
 
     # Run the bot until you press Ctrl-C or the process receives SIGINT,
     # SIGTERM or SIGABRT. This should be used most of the time, since
