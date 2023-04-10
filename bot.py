@@ -7,9 +7,10 @@ Author: liuhh02 https://medium.com/@liuhh02
 import logging
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 import os
+
 PORT = int(os.environ.get('PORT', 5000))
-TOKEN = int(os.environ.get('TOKEN', 5000))
-APP_NAME = int(os.environ.get('APP_NAME', 5000))
+TOKEN = int(os.environ.get('TOKEN', None))
+APP_URL = int(os.environ.get('APP_URL', None))
 
 # Enable logging
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
@@ -59,7 +60,7 @@ def main():
     updater.start_webhook(listen="0.0.0.0",
                           port=int(PORT),
                           url_path=TOKEN)
-    updater.bot.setWebhook(APP_NAME' + TOKEN)
+    updater.bot.setWebhook(APP_URL + TOKEN)
 
     # Run the bot until you press Ctrl-C or the process receives SIGINT,
     # SIGTERM or SIGABRT. This should be used most of the time, since
